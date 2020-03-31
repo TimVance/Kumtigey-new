@@ -3823,3 +3823,13 @@ header .menu_top_block li .dropdown>li:nth-child(n+11)>.dropdown, .menu_top_bloc
 @media (max-width: 767px){
 	.bx_item_list_you_looked_horizontal .bx_catalog_item .bx_stick{left:-16px;}
 }
+.mobile-search-wrapper {
+	margin-top: 10px;
+	position: relative;
+	display: none;
+}
+@media (max-width: 767px) {
+	.mobile-search-wrapper {
+		display: block;
+	}
+}
