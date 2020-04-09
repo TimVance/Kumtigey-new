@@ -3833,3 +3833,8 @@ header .menu_top_block li .dropdown>li:nth-child(n+11)>.dropdown, .menu_top_bloc
 		display: block;
 	}
 }
+
+.right_block img {
+	max-width: 100%;
+	height: auto;
+}
