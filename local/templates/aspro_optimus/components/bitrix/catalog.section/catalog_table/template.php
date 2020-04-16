@@ -147,7 +147,11 @@
 						</div>
 					</td>
 					<td class="but-cell item_<?=$arItem["ID"]?>">
-                        <? if($arItem["PROPERTIES"]["TORGOVAYA_MARKA"]["VALUE"] == "VIKING" || $arItem["PROPERTIES"]["TORGOVAYA_MARKA"]["VALUE"] == "STIHL") ;//echo '<div class="order-message">Только самовывоз!</div>'; ?>
+                        <? if(
+                            ($arItem["PROPERTIES"]["TORGOVAYA_MARKA"]["VALUE"] == "VIKING" ||
+                                $arItem["PROPERTIES"]["TORGOVAYA_MARKA"]["VALUE"] == "STIHL") &&
+                            COption::GetOptionString( "askaron.settings", "UF_SAMOVYVOZ" )
+                        )   echo '<div class="order-message">Только самовывоз!</div>'; ?>
 						<div class="counter_wrapp">
 							<?if($arAddToBasketData["OPTIONS"]["USE_PRODUCT_QUANTITY_LIST"] && !count($arItem["OFFERS"]) && $arAddToBasketData["ACTION"] == "ADD" && $arItem["CAN_BUY"]):?>
 								<div class="counter_block" data-item="<?=$arItem["ID"];?>" <?=(in_array($arItem["ID"], $arParams["BASKET_ITEMS"]) ? "style='display: none;'" : "");?>>

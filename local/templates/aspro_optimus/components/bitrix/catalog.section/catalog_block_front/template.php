@@ -129,7 +129,11 @@
 
 
 							<br />
-                            <? if($arItem["PROPERTIES"]["TORGOVAYA_MARKA"]["VALUE"] == "VIKING" || $arItem["PROPERTIES"]["TORGOVAYA_MARKA"]["VALUE"] == "STIHL") ;//echo '<div class="order-message">Только самовывоз!</div>'; ?>
+                            <? if(
+                                ($arItem["PROPERTIES"]["TORGOVAYA_MARKA"]["VALUE"] == "VIKING" ||
+                                    $arItem["PROPERTIES"]["TORGOVAYA_MARKA"]["VALUE"] == "STIHL") &&
+                                COption::GetOptionString( "askaron.settings", "UF_SAMOVYVOZ" )
+                            )   echo '<div class="order-message">Только самовывоз!</div>'; ?>
 							<div class="counter_wrapp <?=($arItem["OFFERS"] && $arParams["TYPE_SKU"] == "TYPE_1" ? 'woffers' : '')?>">
 								<p class="wrapp_one_click">
 											<span class="transparent big_btn type_block button transition_bg one_click" data-item="<?=$arItem["ID"]?>" data-iblockID="<?=$arParams["IBLOCK_ID"]?>" data-quantity="<?=$arAddToBasketData["MIN_QUANTITY_BUY"];?>" onclick="oneClickBuy('<?=$arItem["ID"]?>', '<?=$arParams["IBLOCK_ID"]?>', this)">

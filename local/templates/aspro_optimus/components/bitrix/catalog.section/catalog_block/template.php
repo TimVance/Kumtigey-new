@@ -270,7 +270,11 @@
 										</div>
 									<?}?>
 								<?}?>
-                                <? if($arItem["PROPERTIES"]["TORGOVAYA_MARKA"]["VALUE"] == "VIKING" || $arItem["PROPERTIES"]["TORGOVAYA_MARKA"]["VALUE"] == "STIHL") ;//echo '<div class="order-message">Только самовывоз!</div>'; ?>
+                                <? if(
+                                    ($arItem["PROPERTIES"]["TORGOVAYA_MARKA"]["VALUE"] == "VIKING" ||
+                                    $arItem["PROPERTIES"]["TORGOVAYA_MARKA"]["VALUE"] == "STIHL") &&
+                                    COption::GetOptionString( "askaron.settings", "UF_SAMOVYVOZ" )
+                                    )   echo '<div class="order-message">Только самовывоз!</div>'; ?>
 								<div class="hover_block1 footer_button">
 									<?if($arItem["OFFERS"]){?>
 										<?if(!empty($arItem['OFFERS_PROP'])){?>

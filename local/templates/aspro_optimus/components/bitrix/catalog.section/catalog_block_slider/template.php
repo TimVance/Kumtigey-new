@@ -173,7 +173,11 @@
 										<?}?>
 									<?}?>
 								<?if(!$arItem["OFFERS"] || ($arItem["OFFERS"] && !$arItem['OFFERS_PROP'])):?>
-                                    <? if($arItem["PROPERTIES"]["TORGOVAYA_MARKA"]["VALUE"] == "VIKING" || $arItem["PROPERTIES"]["TORGOVAYA_MARKA"]["VALUE"] == "STIHL") ;//echo '<div class="order-message">Только самовывоз!</div>'; ?>
+                                    <? if(
+                                        ($arItem["PROPERTIES"]["TORGOVAYA_MARKA"]["VALUE"] == "VIKING" ||
+                                            $arItem["PROPERTIES"]["TORGOVAYA_MARKA"]["VALUE"] == "STIHL") &&
+                                        COption::GetOptionString( "askaron.settings", "UF_SAMOVYVOZ" )
+                                    )   echo '<div class="order-message">Только самовывоз!</div>'; ?>
 									<div class="counter_wrapp <?=($arItem["OFFERS"] && $arParams["TYPE_SKU"] == "TYPE_1" ? 'woffers' : '')?>">
 										<?if(($arAddToBasketData["OPTIONS"]["USE_PRODUCT_QUANTITY_LIST"] && $arAddToBasketData["ACTION"] == "ADD") && $arItem["CAN_BUY"]):?>
 											<div class="counter_block" data-offers="<?=($arItem["OFFERS"] ? "Y" : "N");?>" data-item="<?=$arItem["ID"];?>">

@@ -400,8 +400,13 @@ echo "</pre>";*/?>
 				</div>
 			<?}?>
 			<div class="middle_info main_item_wrapper">
-                <? if($arResult["PROPERTIES"]["TORGOVAYA_MARKA"]["VALUE"] == "VIKING" || $arResult["PROPERTIES"]["TORGOVAYA_MARKA"]["VALUE"] == "STIHL") ;//echo '<div class="order-message">Только самовывоз!</div>'; ?>
-				<div class="prices_block">
+                <? if(
+                        (
+                        $arResult["PROPERTIES"]["TORGOVAYA_MARKA"]["VALUE"] == "VIKING" ||
+                        $arResult["PROPERTIES"]["TORGOVAYA_MARKA"]["VALUE"] == "STIHL"
+                        ) && COption::GetOptionString( "askaron.settings", "UF_SAMOVYVOZ" )
+                ) echo '<div class="order-message">Только самовывоз!</div>'; ?>
+                <div class="prices_block">
 					<div class="cost prices clearfix">
 						<?if( count( $arResult["OFFERS"] ) > 0 ){?>
 							<div class="with_matrix" style="display:none;">
