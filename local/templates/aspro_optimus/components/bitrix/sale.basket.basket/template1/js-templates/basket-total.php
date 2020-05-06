@@ -72,7 +72,7 @@ use Bitrix\Main\Localization\Loc;
 						<?=Loc::getMessage('SBB_ORDER')?>
 					</button>
 				</div>
-				
+
 		</div>
 
 		<?
