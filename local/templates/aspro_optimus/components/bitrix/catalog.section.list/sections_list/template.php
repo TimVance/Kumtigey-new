@@ -1,8 +1,10 @@
 <?if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true)die();?><? $this->setFrameMode( true ); ?>
+
 <?if($arResult["SECTIONS"]){?>
-<div class="catalog_section_list rows_block items">	
+<div class="catalog_section_list rows_block items">
 	<?foreach( $arResult["SECTIONS"] as $arItems ){
-		$this->AddEditAction($arItems['ID'], $arItems['EDIT_LINK'], CIBlock::GetArrayByID($arItems["IBLOCK_ID"], "ELEMENT_EDIT"));
+        if (empty($arItems["ELEMENT_CNT"])) continue;
+        $this->AddEditAction($arItems['ID'], $arItems['EDIT_LINK'], CIBlock::GetArrayByID($arItems["IBLOCK_ID"], "ELEMENT_EDIT"));
 		$this->AddDeleteAction($arItems['ID'], $arItems['DELETE_LINK'], CIBlock::GetArrayByID($arItems["IBLOCK_ID"], "ELEMENT_DELETE"), array("CONFIRM" => GetMessage('CT_BNL_ELEMENT_DELETE_CONFIRM')));
 	?>
 		<div class="item_block col-2">
@@ -30,6 +32,7 @@
 								</li>
 								<?if($arItems["SECTIONS"]){
 									foreach( $arItems["SECTIONS"] as $arItem ){?>
+                                        <? if(empty($arItem["ELEMENT_CNT"])) continue; ?>
 										<li class="sect"><a href="<?=$arItem["SECTION_PAGE_URL"]?>" class="dark_link"><?=$arItem["NAME"]?><? echo $arItem["ELEMENT_CNT"]?'&nbsp;<span>'.$arItem["ELEMENT_CNT"].'</span>':'';?></a></li>
 									<?}
 								}?>
