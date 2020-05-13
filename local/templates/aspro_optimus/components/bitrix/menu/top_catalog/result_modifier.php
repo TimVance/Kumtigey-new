@@ -30,6 +30,7 @@
 		$cur_page_no_index = $GLOBALS['APPLICATION']->GetCurPage(false);
 
 		foreach($arSections as $ID => $arSection){
+
 			$arSections[$ID]['SELECTED'] = CMenu::IsItemSelected($arSection['SECTION_PAGE_URL'], $cur_page, $cur_page_no_index);
 			if($arSection['PICTURE']){
 				$img=CFile::ResizeImageGet($arSection['PICTURE'], Array('width'=>50, 'height'=>50), BX_RESIZE_IMAGE_PROPORTIONAL, true);
@@ -46,6 +47,7 @@
 				$arTmpResult[] = &$arSections[$arSection['ID']];
 			}
 		}
+
 		$arResult[0]["CHILD"]=$arTmpResult;
 	}
 }?>

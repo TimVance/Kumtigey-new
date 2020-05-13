@@ -37,6 +37,12 @@
 								<?}?>
 							</li>
 						<?}?>
+                        <?
+                        $uri = explode("/", $_SERVER["REQUEST_URI"]);
+                        if($uri[1] != "milwaukeetools" || $uri[1] == "") {
+                            echo '<li><a href="/milwaukeetools/">Milwaukee</a></li>';
+                        }
+                        ?>
 					</ul>
 				<?}?>
 			</li>
