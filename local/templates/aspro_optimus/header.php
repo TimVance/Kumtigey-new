@@ -138,20 +138,20 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 								<td  class="center_block">																	
 									<div class="search">
 										<?$APPLICATION->IncludeComponent(
-	"bitrix:main.include", 
-	".default", 
-	array(
-		"COMPONENT_TEMPLATE" => ".default",
-		"PATH" => SITE_DIR."include/top_page/search.title.catalog.php",
-		"AREA_FILE_SHOW" => "file",
-		"AREA_FILE_SUFFIX" => "",
-		"AREA_FILE_RECURSIVE" => "Y",
-		"EDIT_TEMPLATE" => "standard.php",
-		"COMPOSITE_FRAME_MODE" => "Y",
-		"COMPOSITE_FRAME_TYPE" => "AUTO"
-	),
-	false
-);?>
+                                            "bitrix:main.include",
+                                            ".default",
+                                            array(
+                                                "COMPONENT_TEMPLATE" => ".default",
+                                                "PATH" => SITE_DIR."include/top_page/search.title.catalog.php",
+                                                "AREA_FILE_SHOW" => "file",
+                                                "AREA_FILE_SUFFIX" => "",
+                                                "AREA_FILE_RECURSIVE" => "Y",
+                                                "EDIT_TEMPLATE" => "standard.php",
+                                                "COMPOSITE_FRAME_MODE" => "Y",
+                                                "COMPOSITE_FRAME_TYPE" => "AUTO"
+                                            ),
+                                            false
+                                        );?>
 									</div>
 								</td>
 								<td class="basket_wrapp">
@@ -278,81 +278,54 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 								</ul>				
 								<div class="catalog_menu_ext">
 									<?$APPLICATION->IncludeComponent(
-	"bitrix:main.include", 
-	"front", 
-	array(
-		"COMPONENT_TEMPLATE" => "front",
-		"PATH" => SITE_DIR."include/menu/menu.catalog.php",
-		"AREA_FILE_SHOW" => "file",
-		"AREA_FILE_SUFFIX" => "",
-		"AREA_FILE_RECURSIVE" => "Y",
-		"EDIT_TEMPLATE" => "standard.php",
-		"COMPOSITE_FRAME_MODE" => "Y",
-		"COMPOSITE_FRAME_TYPE" => "AUTO"
-	),
-	false
-);?>
+                                        "bitrix:main.include",
+                                        "front",
+                                        array(
+                                            "COMPONENT_TEMPLATE" => "front",
+                                            "PATH" => SITE_DIR."include/menu/menu.catalog.php",
+                                            "AREA_FILE_SHOW" => "file",
+                                            "AREA_FILE_SUFFIX" => "",
+                                            "AREA_FILE_RECURSIVE" => "Y",
+                                            "EDIT_TEMPLATE" => "standard.php",
+                                            "COMPOSITE_FRAME_MODE" => "Y",
+                                            "COMPOSITE_FRAME_TYPE" => "AUTO"
+                                        ),
+                                        false
+                                    );?>
 								</div>
 								<div class="inc_menu">
 									<?$APPLICATION->IncludeComponent(
-	"bitrix:main.include", 
-	"front", 
-	array(
-		"COMPONENT_TEMPLATE" => "front",
-		"PATH" => SITE_DIR."include/menu/menu.top_content_multilevel.php",
-		"AREA_FILE_SHOW" => "file",
-		"AREA_FILE_SUFFIX" => "",
-		"AREA_FILE_RECURSIVE" => "Y",
-		"EDIT_TEMPLATE" => "standard.php",
-		"COMPOSITE_FRAME_MODE" => "A",
-		"COMPOSITE_FRAME_TYPE" => "AUTO"
-	),
-	false
-);?>
+                                        "bitrix:main.include",
+                                        "front",
+                                        array(
+                                            "COMPONENT_TEMPLATE" => "front",
+                                            "PATH" => SITE_DIR."include/menu/menu.top_content_multilevel.php",
+                                            "AREA_FILE_SHOW" => "file",
+                                            "AREA_FILE_SUFFIX" => "",
+                                            "AREA_FILE_RECURSIVE" => "Y",
+                                            "EDIT_TEMPLATE" => "standard.php",
+                                            "COMPOSITE_FRAME_MODE" => "A",
+                                            "COMPOSITE_FRAME_TYPE" => "AUTO"
+                                        ),
+                                        false
+                                    );?>
 								</div>
-							</div>
-						</div>
-					</div>
-				</header>
-				<header id="header" class="fixedheader">
-					<div class="catalog_menu menu_<?=strToLower($TEMPLATE_OPTIONS["MENU_COLOR"]["CURRENT_VALUE"]);?>">
-						<div class="wrapper_inner">
-							<div class="wrapper_middle_menu wrap_menu">
-								<div class="catalog_menu_ext">
-									<?$APPLICATION->IncludeComponent(
-										"bitrix:main.include", 
-										"front", 
-										array(
-											"COMPONENT_TEMPLATE" => "front",
-											"PATH" => SITE_DIR."include/menu/menu.catalogfixed.php",
-											"AREA_FILE_SHOW" => "file",
-											"AREA_FILE_SUFFIX" => "",
-											"AREA_FILE_RECURSIVE" => "Y",
-											"EDIT_TEMPLATE" => "standard.php",
-											"COMPOSITE_FRAME_MODE" => "A",
-											"COMPOSITE_FRAME_TYPE" => "AUTO"
-										),
-										false
-									);?>
-								</div>
-								<div class="inc_menu">
-									<span class="phonefixed">
+                                <span class="phonefixed">
 										<span class="icons fa fa-phone"></span>
 										<span class="phone_text">
 											<?$APPLICATION->IncludeComponent("bitrix:main.include", ".default",
-												array(
-													"COMPONENT_TEMPLATE" => ".default",
-													"PATH" => SITE_DIR."include/phone.php",
-													"AREA_FILE_SHOW" => "file",
-													"AREA_FILE_SUFFIX" => "",
-													"AREA_FILE_RECURSIVE" => "Y",
-													"EDIT_TEMPLATE" => "standard.php"
-												),
-												false
-											);?>
+                                                array(
+                                                    "COMPONENT_TEMPLATE" => ".default",
+                                                    "PATH" => SITE_DIR."include/phone.php",
+                                                    "AREA_FILE_SHOW" => "file",
+                                                    "AREA_FILE_SUFFIX" => "",
+                                                    "AREA_FILE_RECURSIVE" => "Y",
+                                                    "EDIT_TEMPLATE" => "standard.php"
+                                                ),
+                                                false
+                                            );?>
 										</span>
 									</span>
-								</div>
 							</div>
 						</div>
 					</div>

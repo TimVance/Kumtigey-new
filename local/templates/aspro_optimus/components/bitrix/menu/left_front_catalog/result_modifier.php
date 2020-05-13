@@ -8,6 +8,12 @@ if($arSections){
 	$cur_page_no_index = $GLOBALS['APPLICATION']->GetCurPage(false);
 
 
+	/*echo "<pre>";
+	print_r($arSections);
+	echo "</pre>";*/
+
+
+	/*** Мой запрос к бд, что бы получить количество товаров в наличии в категории **/
 	$arFilter = Array("IBLOCK_ID"=>$catalog_id,  ">CATALOG_QUANTITY"=>'0', "ACTIVE_DATE"=>"Y", "ACTIVE"=>"Y");
 	$res = CIBlockElement::GetList(Array(), $arFilter, array("IBLOCK_SECTION_ID"), false, Array("CATALOG_GROUP_*", "name"));
 	while($ob = $res->GetNextElement())
@@ -16,9 +22,13 @@ if($arSections){
 		$arSections[$arFields['IBLOCK_SECTION_ID']]['COUNT_GOODS'] = $arFields['CNT'];
 		//echo "<pre>"; print_r($arFields); echo "</pre>"; 
 	}
+	/*******************/
 
 
 	foreach($arSections as $ID => $arSection){
+		/*echo "<pre>";
+		print_r($arSection);
+		echo "</pre>";*/
 
 		$arSections[$ID]['SELECTED'] = CMenu::IsItemSelected($arSection['SECTION_PAGE_URL'], $cur_page, $cur_page_no_index);
 		if($arSection['PICTURE']){

@@ -325,48 +325,64 @@ body .wrapper .catalog_item .item_info .buttons_block {
 .phonefixed {
     color: #fff;
 }
-.phonefixed a {
-    color: #fff;
-    display: block;
-    text-align: right;
-    padding-right: 20px;
-}
-.fixedheader .fa-phone {
-	display: none;
-}
-.fixedheader {
-	visibility: hidden;
-	position: fixed;
-	top: -100px;
-	-webkit-transition: top .3s, visibility .3s;
-	-o-transition: top .3s, visibility .3s;
-	transition: top .3s, visibility .3s;
-}
-.fixedheader .wrapper_middle_menu {
-	-webkit-box-shadow: 0 0 10px 0 rgba(0,2,0,0.25);
-    -moz-box-shadow: 0 0 10px 0 rgba(0,2,0,0.25);
-    box-shadow: 0 0 10px 0 rgba(0,2,0,0.25);
-}
-.fixedheader .iblock-search {
-    margin-top: 7px;
-}
-.fixedheader .logo {
-    padding-top: 7px;
-    max-width: 260px;
-	width: 100%;
-}
-.fixedheader .menu_top_block li.catalog&gt;a:before {
-	background: none;
-}
+
 .searchfixed {
     margin-left: 20px;
     width: 100%;
     max-width: 700px;
 }
-.fixedheader .menu &gt; .catalog &gt; a {
-    padding: 7px 0 0 10px;
+#header .catalog_menu {
+    position: static;
+    top: -100px;
+    -webkit-transition: all .3s;
+    -moz-transition: all .3s;
+    -ms-transition: all .3s;
+    -o-transition: all .3s;
+    transition: all .3s;
+}
+#header .catalog_menu.active {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+}
+#header .catalog_menu.active .inc_menu {
+    visibility: hidden;
+    opacity: 0;
+}
+.phonefixed {
+    display: inline-block;
+    position: absolute;
+    right: 0;
+    top: 0;
     height: 47px;
-    text-align: center;
+    padding: 0 10px;
+    display: none;
+}
+#header .catalog_menu.active .phonefixed {
+    display: block;
+}
+.phonefixed .icons {
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 5px;
+    height: 47px;
+    line-height: 47px;
+    font-size: 20px;
+}
+.phonefixed .phone_text {
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 5px;
+    height: 47px;
+    line-height: 47px;
+}
+.phonefixed .phone_text a {
+    color: #fff;
+    font-size: 16px;
+}
+.phonefixed .phone_text a span {
+    color: #fff !important;
 }
 .iblock-search {
 	top: -100px;
@@ -446,7 +462,7 @@ header .menu_top_block li:nth-child(n+9) .dropdown&gt;li:nth-child(n+9)&gt;.drop
 	z-index: 1 !important;
 }
 @media screen and (min-width: 1280px) {
-	.fixedheader.active {
+	#header .catalog_menu.active {
 		visibility: visible;
 		top:0;
 	}
