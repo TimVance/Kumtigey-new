@@ -260,7 +260,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 					</div>
 					<div class="catalog_menu menu_<?=strToLower($TEMPLATE_OPTIONS["MENU_COLOR"]["CURRENT_VALUE"]);?>">
 						<div class="wrapper_inner">
-							<div class="wrapper_middle_menu wrap_menu">
+							<div class="wrapper_middle_menu wrap_menu" id="return-back">
 								<ul class="menu adaptive">
 									<li class="menu_opener"><div class="text">
 										<?$APPLICATION->IncludeComponent("bitrix:main.include", ".default",
@@ -277,6 +277,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 								</div></li>
 								</ul>				
 								<div class="catalog_menu_ext">
+                                    <?if(!COptimus::IsMainPage()):?>
 									<?$APPLICATION->IncludeComponent(
                                         "bitrix:main.include",
                                         "front",
@@ -292,6 +293,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                                         ),
                                         false
                                     );?>
+                                    <?else:?>
+                                        <ul class="menu top menu_top_block catalogfirst">
+                                            <li class="catalog icons_fa has-child ">
+                                                <a href="#header" class="parent">Каталог</a>
+                                            </li>
+                                        </ul>
+                                    <? endif; ?>
 								</div>
 								<div class="inc_menu">
 									<?$APPLICATION->IncludeComponent(
