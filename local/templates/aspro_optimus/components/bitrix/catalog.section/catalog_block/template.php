@@ -275,6 +275,21 @@
                                     $arItem["PROPERTIES"]["TORGOVAYA_MARKA"]["VALUE"] == "STIHL") &&
                                     COption::GetOptionString( "askaron.settings", "UF_SAMOVYVOZ" )
                                     )   echo '<div class="order-message">Только самовывоз!</div>'; ?>
+
+
+                                <?
+                                // Прятать ли кнопку заказа в один клик
+                                $isShtilOrViking = false;
+                                if(
+                                    $arItem["PROPERTIES"]["TORGOVAYA_MARKA"]["VALUE"] == "STIHL" ||
+                                    $arItem["PROPERTIES"]["TORGOVAYA_MARKA"]["VALUE"] == "VIKING"
+                                ) {
+                                    $isShtilOrViking = true;
+                                    $arAddToBasketData["HTML"] = str_replace("В корзину", "Резерв", $arAddToBasketData["HTML"]);
+                                }
+
+                                ?>
+
 								<div class="hover_block1 footer_button">
 									<?if($arItem["OFFERS"]){?>
 										<?if(!empty($arItem['OFFERS_PROP'])){?>
@@ -299,12 +314,13 @@
 									<?if(!$arItem["OFFERS"] || $arParams['TYPE_SKU'] !== 'TYPE_1'):?>
 										<div class="counter_wrapp <?=($arItem["OFFERS"] && $arParams["TYPE_SKU"] == "TYPE_1" ? 'woffers' : '')?>">
 											<?if(1 OR $arResult["CAN_BUY"]):?>
-						
-												<p class="wrapp_one_click">
-															<span class="transparent big_btn type_block button transition_bg one_click" data-item="<?=$arItem["ID"]?>" data-iblockID="<?=$arParams["IBLOCK_ID"]?>" data-quantity="<?=$arAddToBasketData["MIN_QUANTITY_BUY"];?>" onclick="oneClickBuy('<?=$arItem["ID"]?>', '<?=$arParams["IBLOCK_ID"]?>', this)">
-																<span><?=GetMessage('ONE_CLICK_BUY')?></span>
-															</span>
-												</p>
+                                                <?if(!$isShtilOrViking):?>
+                                                    <p class="wrapp_one_click">
+                                                                <span class="transparent big_btn type_block button transition_bg one_click" data-item="<?=$arItem["ID"]?>" data-iblockID="<?=$arParams["IBLOCK_ID"]?>" data-quantity="<?=$arAddToBasketData["MIN_QUANTITY_BUY"];?>" onclick="oneClickBuy('<?=$arItem["ID"]?>', '<?=$arParams["IBLOCK_ID"]?>', this)">
+                                                                    <span><?=GetMessage('ONE_CLICK_BUY')?></span>
+                                                                </span>
+                                                    </p>
+											    <?endif;?>
 											<?endif;?>
 
 

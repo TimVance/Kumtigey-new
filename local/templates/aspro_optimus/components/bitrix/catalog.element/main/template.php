@@ -494,6 +494,20 @@ echo "</pre>";*/?>
 					<?}?>
 				</div>
 				<div class="buy_block">
+
+                    <?
+                    // Прятать ли кнопку заказа в один клик
+                    $isShtilOrViking = false;
+                    if(
+                        $arResult["DISPLAY_PROPERTIES"]["TORGOVAYA_MARKA"]["VALUE"] == "STIHL" ||
+                        $arResult["DISPLAY_PROPERTIES"]["TORGOVAYA_MARKA"]["VALUE"] == "VIKING"
+                    ) {
+                        $isShtilOrViking = true;
+                        $arAddToBasketData["HTML"] = str_replace("В корзину", "Резерв", $arAddToBasketData["HTML"]);
+                    }
+
+                    ?>
+
 					<?if($arResult["OFFERS"] && $showCustomOffer){?>
 						<div class="sku_props">
 							<?if (!empty($arResult['OFFERS_PROP'])){?>
@@ -527,11 +541,11 @@ echo "</pre>";*/?>
 							<?endif;?>
 							<div id="<? echo $arItemIDs["ALL_ITEM_IDS"]['BASKET_ACTIONS']; ?>" class="button_block <?=(($arAddToBasketData["ACTION"] == "ORDER" /*&& !$arResult["CAN_BUY"]*/) || !$arResult["CAN_BUY"] || !$arAddToBasketData["OPTIONS"]["USE_PRODUCT_QUANTITY_DETAIL"] || ($arAddToBasketData["ACTION"] == "SUBSCRIBE" && $arResult["CATALOG_SUBSCRIBE"] == "Y")  ? "wide" : "");?>">
 								<!--noindex-->
-									<?=$arAddToBasketData["HTML"]?>
+									<?=$arAddToBasketData["HTML"];?>
 								<!--/noindex-->
 							</div>
 						</div>
-						<?if($arAddToBasketData["ACTION"] !== "NOTHING"):?>
+						<?if($arAddToBasketData["ACTION"] !== "NOTHING" && !$isShtilOrViking):?>
 							<?if($arAddToBasketData["ACTION"] == "ADD" && $arResult["CAN_BUY"] && $arParams["SHOW_ONE_CLICK_BUY"]!="N"):?>
 								<div class="wrapp_one_click">
 									<span class="transparent big_btn type_block button transition_bg one_click" data-item="<?=$arResult["ID"]?>" data-iblockID="<?=$arParams["IBLOCK_ID"]?>" data-quantity="<?=$arAddToBasketData["MIN_QUANTITY_BUY"];?>" onclick="oneClickBuy('<?=$arResult["ID"]?>', '<?=$arParams["IBLOCK_ID"]?>', this)">

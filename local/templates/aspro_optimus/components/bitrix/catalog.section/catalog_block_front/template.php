@@ -127,6 +127,19 @@
 							<?}?>
 
 
+                            <?
+                            // Прятать ли кнопку заказа в один клик
+                            $isShtilOrViking = false;
+                            if(
+                                $arItem["PROPERTIES"]["TORGOVAYA_MARKA"]["VALUE"] == "STIHL" ||
+                                $arItem["PROPERTIES"]["TORGOVAYA_MARKA"]["VALUE"] == "VIKING"
+                            ) {
+                                $isShtilOrViking = true;
+                                $arAddToBasketData["HTML"] = str_replace("В корзину", "Резерв", $arAddToBasketData["HTML"]);
+                            }
+
+                            ?>
+
 
 							<br />
                             <? if(
@@ -135,11 +148,13 @@
                                 COption::GetOptionString( "askaron.settings", "UF_SAMOVYVOZ" )
                             )   echo '<div class="order-message">Только самовывоз!</div>'; ?>
 							<div class="counter_wrapp <?=($arItem["OFFERS"] && $arParams["TYPE_SKU"] == "TYPE_1" ? 'woffers' : '')?>">
-								<p class="wrapp_one_click">
-											<span class="transparent big_btn type_block button transition_bg one_click" data-item="<?=$arItem["ID"]?>" data-iblockID="<?=$arParams["IBLOCK_ID"]?>" data-quantity="<?=$arAddToBasketData["MIN_QUANTITY_BUY"];?>" onclick="oneClickBuy('<?=$arItem["ID"]?>', '<?=$arParams["IBLOCK_ID"]?>', this)">
-												<span><?=GetMessage('ONE_CLICK_BUY')?></span>
-											</span>
-								</p>
+                                <?if(!$isShtilOrViking):?>
+                                    <p class="wrapp_one_click">
+                                                <span class="transparent big_btn type_block button transition_bg one_click" data-item="<?=$arItem["ID"]?>" data-iblockID="<?=$arParams["IBLOCK_ID"]?>" data-quantity="<?=$arAddToBasketData["MIN_QUANTITY_BUY"];?>" onclick="oneClickBuy('<?=$arItem["ID"]?>', '<?=$arParams["IBLOCK_ID"]?>', this)">
+                                                    <span><?=GetMessage('ONE_CLICK_BUY')?></span>
+                                                </span>
+                                    </p>
+                                <? endif; ?>
 								<div id="<?=$arItemIDs["ALL_ITEM_IDS"]['BASKET_ACTIONS']; ?>" class="button_block <?=(($arAddToBasketData["ACTION"] == "ORDER"/*&& !$arItem["CAN_BUY"]*/)  || !$arItem["CAN_BUY"] || !$arAddToBasketData["OPTIONS"]["USE_PRODUCT_QUANTITY_LIST"] || $arAddToBasketData["ACTION"] == "SUBSCRIBE" ? "wide" : "");?>">
 									<!--noindex-->
 										<?=$arAddToBasketData["HTML"]?>

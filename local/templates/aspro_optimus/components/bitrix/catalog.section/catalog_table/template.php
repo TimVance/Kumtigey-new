@@ -152,6 +152,22 @@
                                 $arItem["PROPERTIES"]["TORGOVAYA_MARKA"]["VALUE"] == "STIHL") &&
                             COption::GetOptionString( "askaron.settings", "UF_SAMOVYVOZ" )
                         )   echo '<div class="order-message">Только самовывоз!</div>'; ?>
+
+
+                        <?
+                        // Прятать ли кнопку заказа в один клик
+                        $isShtilOrViking = false;
+                        if(
+                            $arItem["PROPERTIES"]["TORGOVAYA_MARKA"]["VALUE"] == "STIHL" ||
+                            $arItem["PROPERTIES"]["TORGOVAYA_MARKA"]["VALUE"] == "VIKING"
+                        ) {
+                            $isShtilOrViking = true;
+                            $arAddToBasketData["HTML"] = str_replace("В корзину", "Резерв", $arAddToBasketData["HTML"]);
+                        }
+
+                        ?>
+
+
 						<div class="counter_wrapp">
 							<?if($arAddToBasketData["OPTIONS"]["USE_PRODUCT_QUANTITY_LIST"] && !count($arItem["OFFERS"]) && $arAddToBasketData["ACTION"] == "ADD" && $arItem["CAN_BUY"]):?>
 								<div class="counter_block" data-item="<?=$arItem["ID"];?>" <?=(in_array($arItem["ID"], $arParams["BASKET_ITEMS"]) ? "style='display: none;'" : "");?>>
