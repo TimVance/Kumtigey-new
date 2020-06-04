@@ -166,7 +166,7 @@ ul.tabs li.stretch { display: none; }
 	/* ORDER */
 	#bx-soa-total{width:100%;}
 	#bx-soa-total-mobile{display:block!important;}
-	#bx-soa-order #bx-soa-orderSave{display:none;}
+	//#bx-soa-order #bx-soa-orderSave{display:none;}
 	#bx-soa-order>.bx-soa{width:100%;}
 	#bx-soa-order #bx-soa-total .bx-soa-cart-total.bx-soa-cart-total-fixed{position:relative!important;opacity:1!important;}
 	#bx-soa-order #bx-soa-total .bx-soa-cart-total-ghost{padding:0!important;}
@@ -1375,8 +1375,8 @@ ul.tabs li.stretch { display: none; }
 	.bx_ordercart .bx_ordercart_order_sum{max-width:295px;}
 
 	/*ORDER*/
-	#bx-soa-order .bx-soa-pp-item-container .bx-soa-pp-company-graf-container{display:block;margin: 0px 0px 10px;height: auto;}
-	#bx-soa-order .bx-soa-pp-item-container .bx-soa-pp-company-smalltitle{display:block;padding: 0px;}
+	//#bx-soa-order .bx-soa-pp-item-container .bx-soa-pp-company-graf-container{display:block;margin: 0px 0px 10px;height: auto;}
+	//#bx-soa-order .bx-soa-pp-item-container .bx-soa-pp-company-smalltitle{display:block;padding: 0px;}
 	#bx-soa-pickup .bx-soa-section-content .bx-soa-pickup-preview-img{float:none;float: none;display: block;margin: 0px 0px 10px;}
 	.bx-soa-pp-company-graf-container .bx-soa-pp-delivery-cost{position:static;}
 

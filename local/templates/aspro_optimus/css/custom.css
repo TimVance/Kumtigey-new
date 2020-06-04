@@ -351,6 +351,9 @@ body .wrapper .catalog_item .item_info .buttons_block {
     visibility: hidden;
     opacity: 0;
 }
+#header.no-fixed .catalog_menu.active {
+    position: static;
+}
 .phonefixed {
     display: inline-block;
     position: absolute;
@@ -474,6 +477,9 @@ header .menu_top_block li:nth-child(n+9) .dropdown&gt;li:nth-child(n+9)&gt;.drop
 		width: 700px;
 		left: calc(50% - 300px);
 	}
+    .no-fixed .iblock-search.active {
+        position: static !important;
+    }
 }
 
 
@@ -499,5 +505,10 @@ body ._mobile .com-rbs2__submit {
     width: auto;
     font-size: 20px;
     line-height: 22px;
-	}
+}
+
+@media screen and (max-width: 768px) {
+    .middle-h-row .search {
+        display: none !important;
+    }
 }

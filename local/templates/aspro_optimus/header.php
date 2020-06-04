@@ -110,7 +110,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 						</div>
 					</div>
 				<?}?>
-				<header id="header">
+                <?
+                $header_fixed = true;
+                if($APPLICATION->GetCurPage(false) == "/basket/") {
+                    $header_fixed = false;
+                }
+                ?>
+				<header id="header" <? if(!$header_fixed) echo 'class="no-fixed"'; ?>>
 					<div class="wrapper_inner">
 						<div class="top_br"></div>
 						<table class="middle-h-row">
