@@ -24,6 +24,11 @@ $isAjax = ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST["ajax_action"]) 
 		<span class="button grey_br transparent remove_all_compare icon_close" onclick="CatalogCompareObj.MakeAjaxAction('/catalog/compare.php?action=DELETE_FROM_COMPARE_RESULT&ID[]=<?=$arStr?>', 'Y');"><?=GetMessage("CLEAR_ALL_COMPARE")?></span>
 	</span>
 </div>
+    <pre style="display: none">
+
+        <? print_r($arResult["ITEMS"]); ?>
+
+    </pre>
 <div class="table_compare wrap_sliders tabs-body">
 	<?if (!empty($arResult["SHOW_FIELDS"])){?>
 		<div class="frame top">
@@ -35,7 +40,11 @@ $isAjax = ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST["ajax_action"]) 
 								<div class="item_block">
 									<span onclick="CatalogCompareObj.MakeAjaxAction('<?=CUtil::JSEscape($arElement['~DELETE_URL'])?>', 'Y');" class="remove" title="<?=GetMessage("CATALOG_REMOVE_PRODUCT")?>"><i></i></span>
 									<div class="image_wrapper_block">
-										<?if($arElement["OFFER_FIELDS"]["PREVIEW_PICTURE"]){
+                                        <?if(!empty($arElement["PREVIEW_PICTURE"]["SRC"])) {?>
+                                            <a href="<?=$arElement["DETAIL_PAGE_URL"]?>">
+                                                <img src="<?=$arElement["PREVIEW_PICTURE"]["SRC"]?>" alt="<?=$arElement["NAME"]?>">
+                                            </a>
+										<?}elseif($arElement["OFFER_FIELDS"]["PREVIEW_PICTURE"]){
 												$img=CFile::GetFileArray($arElement["OFFER_FIELDS"]["PREVIEW_PICTURE"]);?>
 												<a href="<?=$arElement["DETAIL_PAGE_URL"]?>"><img src="<?=$img["SRC"]?>" alt="<?=$img["ALT"]?>" title="<?=$img["TITLE"]?>" /></a>
 										<?}elseif($arElement["FIELDS"]["PREVIEW_PICTURE"]){
